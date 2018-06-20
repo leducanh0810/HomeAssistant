@@ -1,0 +1,31 @@
+  default_view:
+    view: yes
+    icon: mdi:home
+    entities:
+      - group.modbuscoil
+      - group.modbus_input
+      - group.light
+  modbuscoil:
+    name: Modbus Coil
+    entities:
+      - switch.modbuscoil1
+      - binary_sensor.sensor1
+  modbus_input:
+    name: Modbus Input
+    icon: mdi:account-multiple
+    view: yes
+    entities:
+      - sensor.modbus_input_float
+      - sensor.modbus_input_uint
+      - sensor.modbus_input_int
+      - group.modbus_holding
+  modbus_holding:
+    name: Modbus Holding
+    view: yes
+    entities:
+      - sensor.modbus_holding_float
+      - sensor.modbus_holding_uint
+      - sensor.modbus_holding_int
+  light:
+    name: LIFX Light
+    entities: 
