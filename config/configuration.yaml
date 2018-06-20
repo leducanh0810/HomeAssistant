@@ -69,25 +69,79 @@ script: !include scripts.yaml
 # Weather prediction
 sensor:
   - platform: yr
+  # mModbus register
   - platform: modbus
+    scan_interval: 5
     registers:
-    - name: Sensor3
+    - name: Modbus_Holding_Float
+      slave: 1
+      register: 120
+      register_type: holding
       unit_of_measurement: °C
+      count: 2
+      scale: 1
+      offset: 0
+      precision: 5
+      data_type: float #Float 32
+    - name: Modbus_Holding_uint
+      slave: 1
+      register: 122
+      register_type: holding
+      unit_of_measurement: °C
+      count: 2
+      scale: 1
+      offset: 0
+      precision: 0
+      data_type: uint #Uint32
+    - name: Modbus_Holding_int
+      slave: 1
+      register: 124
+      register_type: holding
+      unit_of_measurement: °C
+      count: 1
+      scale: 1
+      offset: 0
+      precision: 0
+      data_type: int #int16
+    - name: Modbus_Input_Float
       slave: 1
       register: 120
       register_type: input
-      data_type: int
+      unit_of_measurement: °C
+      count: 2
       scale: 1
       offset: 0
-      precision: 2
-      scan_interval: 5
+      precision: 5
+      data_type: float
+    - name: Modbus_input_uint
+      slave: 1
+      register: 122
+      register_type: input
+      unit_of_measurement: °C
+      count: 2
+      scale: 1
+      offset: 0
+      precision: 0
+      data_type: uint
+    - name: Modbus_input_int
+      slave: 1
+      register: 124
+      register_type: input
+      unit_of_measurement: °C
+      count: 1
+      scale: 1
+      offset: 0
+      precision: 0
+      data_type: int
       
-# Modbus Connection
+      
+# Modbus Connection, Not alow dicrese input
 modbus:
   type: tcp
   host: 192.168.1.114
   port: 502
 
+# Modbus Coil Control
 switch:
   platform: modbus
   slave: 1
@@ -96,6 +150,7 @@ switch:
       slave: 1
       coil: 1
 
+# Modbus Coil Status
 binary_sensor:
   - platform: modbus
     scan_interval: 1
