@@ -1,0 +1,2 @@
+2018-06-20 18:40:44 WARNING (MainThread) [homeassistant.setup] Setup of config is taking over 10 seconds.
+2018-06-20 18:46:10 WARNING (SyncWorker_12) [netdisco.ssdp] Error fetching description at 192.168.1.128

@@ -1,0 +1,4 @@
+media_player.office_speaker:
+  name:
+  platform: cast
+  unique_id: cba7968b-c23f-96c8-e7a4-a24034ba7e74
