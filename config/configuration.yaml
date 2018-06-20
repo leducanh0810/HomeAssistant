@@ -66,6 +66,31 @@ group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
 
+# ----FOR MODBUS CONNECT
+# Modbus Connection, Not alow dicrese input
+modbus:
+  type: tcp
+  host: 192.168.1.114
+  port: 502
+
+# Modbus Coil Control
+switch:
+  platform: modbus
+  slave: 1
+  coils:
+    - name: ModBusCoil1
+      slave: 1
+      coil: 1
+
+# Modbus Coil Status
+binary_sensor:
+  - platform: modbus
+    scan_interval: 1
+    coils:
+      - name: Sensor1
+        slave: 1
+        coil: 100
+        
 # Weather prediction
 sensor:
   - platform: yr
@@ -133,28 +158,32 @@ sensor:
       offset: 0
       precision: 0
       data_type: int
-      
-      
-# Modbus Connection, Not alow dicrese input
-modbus:
-  type: tcp
-  host: 192.168.1.114
-  port: 502
 
-# Modbus Coil Control
-switch:
-  platform: modbus
-  slave: 1
-  coils:
-    - name: ModBusCoil1
-      slave: 1
-      coil: 1
-
-# Modbus Coil Status
-binary_sensor:
-  - platform: modbus
-    scan_interval: 1
-    coils:
-      - name: Sensor1
-        slave: 1
-        coil: 100
+##--LIFX Connection
+scene:
+  - platform: lifx_cloud
+    token: c0fd191e4b7477f9550570efdd77c9782ffbebb35a1ef49179a673855b3a5171
+light:
+  - platform: lifx
+  
+##--LG Connection
+media_player:
+  - platform: webostv
+    host: 192.168.1.145
+    name: Living Room TV
+    timeout: 5
+    filename: webostv.conf
+    turn_on_action:
+      service: persistent_notification.create
+      data:
+        message: "Turn on action"
+    customize:
+      sources:
+        - livetv
+        - youtube
+        - makotv
+        - netflix
+    wake_on_lan:
+      service: wake_on_lan.send_magic_packet #Not operation
+      data:
+        mac: C8:08:E9:DE:FB:0E
