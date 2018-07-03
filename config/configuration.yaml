@@ -2,10 +2,10 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 16.0678
-  longitude: 108.2208
+  latitude: 21.0333
+  longitude: 105.85
   # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 10
+  elevation: 0
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -24,9 +24,9 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  # api_password: !secret http_password
+  api_password: 1
+  server_port: 80
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -55,6 +55,10 @@ map:
 # Track the sun
 sun:
 
+# Weather prediction
+sensor:
+  - platform: yr
+
 # Text to speech
 tts:
   - platform: google
@@ -64,126 +68,20 @@ cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
+    
 script: !include scripts.yaml
 
-# ----FOR MODBUS CONNECT
-# Modbus Connection, Not alow dicrese input
-modbus:
-  type: tcp
-  host: 192.168.1.114
-  port: 502
+ifttt:
+  key: bYOXYE9RbodVENDbWi1Ulz6jA0A1NApz0iS_uKLP0TX
 
-# Modbus Coil Control
-switch:
-  platform: modbus
-  slave: 1
-  coils:
-    - name: ModBusCoil1
-      slave: 1
-      coil: 1
+input_boolean:
+  lifx_contact:
+    name: LIFX switch
+    initial: off
 
-# Modbus Coil Status
-binary_sensor:
-  - platform: modbus
-    scan_interval: 1
-    coils:
-      - name: Sensor1
-        slave: 1
-        coil: 100
-        
-# Weather prediction
-sensor:
-  - platform: yr
-  # mModbus register
-  - platform: modbus
-    scan_interval: 5
-    registers:
-    - name: Modbus_Holding_Float
-      slave: 1
-      register: 120
-      register_type: holding
-      unit_of_measurement: °C
-      count: 2
-      scale: 1
-      offset: 0
-      precision: 5
-      data_type: float #Float 32
-    - name: Modbus_Holding_uint
-      slave: 1
-      register: 122
-      register_type: holding
-      unit_of_measurement: °C
-      count: 2
-      scale: 1
-      offset: 0
-      precision: 0
-      data_type: uint #Uint32
-    - name: Modbus_Holding_int
-      slave: 1
-      register: 124
-      register_type: holding
-      unit_of_measurement: °C
-      count: 1
-      scale: 1
-      offset: 0
-      precision: 0
-      data_type: int #int16
-    - name: Modbus_Input_Float
-      slave: 1
-      register: 120
-      register_type: input
-      unit_of_measurement: °C
-      count: 2
-      scale: 1
-      offset: 0
-      precision: 5
-      data_type: float
-    - name: Modbus_input_uint
-      slave: 1
-      register: 122
-      register_type: input
-      unit_of_measurement: °C
-      count: 2
-      scale: 1
-      offset: 0
-      precision: 0
-      data_type: uint
-    - name: Modbus_input_int
-      slave: 1
-      register: 124
-      register_type: input
-      unit_of_measurement: °C
-      count: 1
-      scale: 1
-      offset: 0
-      precision: 0
-      data_type: int
-
-##--LIFX Connection
-scene:
-  - platform: lifx_cloud
-    token: c0fd191e4b7477f9550570efdd77c9782ffbebb35a1ef49179a673855b3a5171
-light:
-  - platform: lifx
-  
-##--LG Connection
-media_player:
-  - platform: webostv
-    host: 192.168.1.145
-    name: Living Room TV
-    timeout: 5
-    filename: webostv.conf
-    turn_on_action:
-      service: persistent_notification.create
-      data:
-        message: "Turn on action"
-    customize:
-      sources:
-        - livetv
-        - youtube
-        - makotv
-        - netflix
-    wake_on_lan:
-      service: wake_on_lan.send_magic_packet #Not operation
-      data:
-        mac: C8:08:E9:DE:FB:0E
+camera:
+  - platform: foscam
+    ip: 14.176.200.78
+    port: 93
+    username: ics
+    password: Ics@12345

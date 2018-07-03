@@ -1,1 +1,26 @@
-[]
+- id: '1530532825996'
+  alias: LIFX On
+  trigger:
+  - entity_id: input_boolean.lifx_contact
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      event: Turn_On_LIFX
+      value1: Hello World
+    service: ifttt.trigger
+- id: '1530541200574'
+  alias: LIFX Off
+  trigger:
+  - entity_id: input_boolean.lifx_contact
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      event: Turn_Off_LIFX
+      value1: Hello World
+    service: ifttt.trigger
