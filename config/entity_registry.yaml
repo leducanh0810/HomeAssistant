@@ -1,4 +1,10 @@
-media_player.office_speaker:
+media_player.officer_speaker:
+  config_entry_id: 05acbeae560541aba9df0219ceaf5081
   name:
   platform: cast
-  unique_id: cba7968b-c23f-96c8-e7a4-a24034ba7e74
+  unique_id: 74270cd8-3b85-eb2b-9a08-bd2d0dcde86d
+light.light_meeting_table:
+  config_entry_id:
+  name:
+  platform: lifx
+  unique_id: d0:73:d5:31:4c:69

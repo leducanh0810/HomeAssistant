@@ -1,0 +1,9 @@
+light_cps_status:
+  name: Lighting in CPS status
+  initial: off
+light_account_status:
+  name: Lighting in Account status
+  initial: off
+light_recep_status:
+  name: Lighting in Reception status
+  initial: off

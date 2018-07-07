@@ -1,26 +1,195 @@
-- id: '1530532825996'
-  alias: LIFX On
+- id: '1530971773221'
+  alias: auto_cam_motion_on_tech_turn
   trigger:
-  - entity_id: input_boolean.lifx_contact
-    from: 'off'
-    platform: state
-    to: 'on'
+  - at: '6:01'
+    platform: time
+  - at: '13:01'
+    platform: time
   condition: []
   action:
-  - data:
-      event: Turn_On_LIFX
-      value1: Hello World
-    service: ifttt.trigger
-- id: '1530541200574'
-  alias: LIFX Off
+  - service: shell_command.cam_tech_motion_turn_on
+- id: '1530971858679'
+  alias: auto_cam_motion_on_account_turn
   trigger:
-  - entity_id: input_boolean.lifx_contact
+  - at: '6:01'
+    platform: time
+  - at: '13:01'
+    platform: time
+  condition: []
+  action:
+  - service: shell_command.cam_account_motion_turn_on
+- id: '1530972048978'
+  alias: auto_cam_motion_on_recep_turn
+  trigger:
+  - at: '6:01'
+    platform: time
+  condition: []
+  action:
+  - service: shell_command.cam_recep_motion_turn_on
+- id: '1530972254852'
+  alias: auto_cam_motion_off_tech_timer_start
+  trigger:
+  - entity_id: sensor.camera_tech_motion
     from: 'on'
     platform: state
     to: 'off'
   condition: []
   action:
   - data:
-      event: Turn_Off_LIFX
-      value1: Hello World
+      entity_id: timer.cam_tech_motion_off
+    service: timer.start
+- id: '1530972459277'
+  alias: auto_cam_motion_off_account_timer_start
+  trigger:
+  - entity_id: sensor.camera_account_motion
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: timer.cam_account_motion_off
+    service: timer.start
+- id: '1530972579940'
+  alias: auto_cam_motion_off_recep_timer_start
+  trigger:
+  - entity_id: sensor.camera_recep_motion
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      entity_id: timer.cam_recep_motion_off
+    service: timer.start
+- id: '1530972814866'
+  alias: auto_cam_motion_off_tech_time_restart
+  trigger:
+  - entity_id: sensor.camera_tech_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      duration: 00:00:00
+      entity_id: timer.cam_tech_motion_off
+    service: timer.start
+- id: '1530972923626'
+  alias: auto_cam_motion_off_account_time_restart
+  trigger:
+  - entity_id: sensor.camera_account_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      duration: 00:00:00
+      entity_id: timer.cam_account_motion_off
+    service: timer.start
+- id: '1530973006704'
+  alias: auto_cam_motion_off_recep_time_restart
+  trigger:
+  - entity_id: sensor.camera_recep_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      duration: 00:00:00
+    service: timer.start
+- id: '1530973188375'
+  alias: auto_light_cps_turn_on_day
+  trigger:
+  - entity_id: sensor.camera_tech_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.light_cps_status
+    state: 'off'
+  - condition: state
+    entity_id: sensor.time_work_boolean
+    state: 'on'
+  action:
+  - data:
+      event: turn_on_cps
     service: ifttt.trigger
+  - data:
+      entity_id: input_boolean.light_cps_status
+    service: input_boolean.turn_on
+- id: '1530973462333'
+  alias: auto_light_account_turn_on_day
+  trigger:
+  - entity_id: sensor.camera_account_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.light_account_status
+    state: 'off'
+  - condition: state
+    entity_id: sensor.time_work_boolean
+    state: 'on'
+  action:
+  - data:
+      event: turn_on_account
+    service: ifttt.trigger
+  - data:
+      entity_id: input_boolean.light_account_status
+    service: input_boolean.turn_on
+- id: '1530973588722'
+  alias: auto_light_recep_turn_on_day
+  trigger:
+  - entity_id: sensor.camera_recep_motion
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.light_recep_status
+    state: 'off'
+  - condition: state
+    entity_id: sensor.time_work_boolean
+    state: 'on'
+  action:
+  - data:
+      event: turn_on_recep
+    service: ifttt.trigger
+  - data:
+      entity_id: input_boolean.light_recep_status
+    service: input_boolean.turn_on
+- id: '1530973778241'
+  alias: auto_light_cps_turn_off
+  trigger:
+  - entity_id: timer.cam_tech_motion_off
+    from: active
+    platform: state
+    to: idle
+  condition: []
+  action:
+  - data:
+      event: turn_off_cps
+    service: ifttt.trigger
+  - data:
+      entity_id: input_boolean.light_cps_status
+    service: input_boolean.turn_off
+- id: '1530973877547'
+  alias: auto_light_account_turn_off
+  trigger:
+  - entity_id: timer.cam_account_motion_off
+    from: active
+    platform: state
+    to: idle
+  condition: []
+  action:
+  - data:
+      event: turn_off_account
+    service: ifttt.trigger
+  - data:
+      entity_id: input_boolean.light_account_status
+    service: input_boolean.turn_off

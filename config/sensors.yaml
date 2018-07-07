@@ -1,0 +1,88 @@
+# Sensors Configuration
+
+- platform: yr
+- platform: command_line
+  name: "Camera recep motion"
+  command: 'curl -k --silent "https://192.168.1.22:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=motionDetectAlarm>).*?(?=</motionDetectAlarm>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      disabled
+    {%- elif value == "1" -%}
+      off
+    {%- elif value == "2" -%}
+      on
+    {%- endif -%}
+  scan_interval: 5
+- platform: command_line
+  name: "Camera account motion"
+  command: 'curl -k --silent "https://192.168.1.23:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=motionDetectAlarm>).*?(?=</motionDetectAlarm>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      disabled
+    {%- elif value == "1" -%}
+      off
+    {%- elif value == "2" -%}
+      on
+    {%- endif -%}
+  scan_interval: 5
+- platform: command_line
+  name: "Camera tech motion"
+  command: 'curl -k --silent "https://192.168.1.21:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=motionDetectAlarm>).*?(?=</motionDetectAlarm>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      disabled
+    {%- elif value == "1" -%}
+      off
+    {%- elif value == "2" -%}
+      on
+    {%- endif -%}
+  scan_interval: 5
+- platform: command_line
+  name: "Camera recep IrLed"
+  command: 'curl -k --silent "https://192.168.1.22:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=infraLedState>).*?(?=</infraLedState>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      Off
+    {%- elif value == "1" -%}
+      On
+    {%- endif -%}
+  scan_interval: 5
+- platform: command_line
+  name: "Camera account IrLed"
+  command: 'curl -k --silent "https://192.168.1.23:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=infraLedState>).*?(?=</infraLedState>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      Off
+    {%- elif value == "1" -%}
+      On
+    {%- endif -%}
+  scan_interval: 5
+- platform: command_line
+  name: "Camera Tech IrLed"
+  command: 'curl -k --silent "https://192.168.1.21:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=infraLedState>).*?(?=</infraLedState>)"'
+  value_template: >-
+    {%- if value == "0" -%}
+      Off
+    {%- elif value == "1" -%}
+      On
+    {%- endif -%}
+  scan_interval: 5
+
+#Sensor for time
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+
+# Sensors for check time work
+- platform: template
+  sensors:
+    time_work_boolean:
+      friendly_name: "Sensor for time work"
+      value_template: >-
+        {%- if ((now().hour >= 6) and (now().hour <= 12) or (now().hour >= 13) and (now().hour <= 17)) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 2

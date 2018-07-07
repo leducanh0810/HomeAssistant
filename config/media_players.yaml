@@ -1,0 +1,19 @@
+- platform: webostv
+  host: 192.168.1.145
+  name: Office TV
+  timeout: 5
+  filename: webostv.conf
+  turn_on_action:
+    service: persistent_notification.create
+    data:
+      message: "Turn on action"
+  customize:
+    sources:
+      - livetv
+      - youtube
+      - makotv
+      - netflix
+  wake_on_lan:
+    service: wake_on_lan.send_magic_packet #Not operation
+    data:
+      mac: C8:08:E9:DE:FB:0E

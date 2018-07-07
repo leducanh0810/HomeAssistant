@@ -1,0 +1,6 @@
+cam_tech_motion_off:
+  duration: '00:03:00'
+cam_account_motion_off:
+  duration: '00:03:00'
+cam_recep_motion_off:
+  duration: '00:03:00'

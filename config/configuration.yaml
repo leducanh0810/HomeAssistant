@@ -2,14 +2,14 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: 21.0333
-  longitude: 105.85
+  latitude: 0
+  longitude: 0
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
   unit_system: metric
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Asia/Ho_Chi_Minh
+  time_zone: Asia/Bangkok
   # Customization file
   customize: !include customize.yaml
 
@@ -24,9 +24,9 @@ config:
 
 http:
   # Secrets are defined in the file secrets.yaml
-  api_password: 1
-  server_port: 80
+  api_password: Ics@12345
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
 
 # Checks for available updates
 # Note: This component will send some information about your system to
@@ -55,10 +55,6 @@ map:
 # Track the sun
 sun:
 
-# Weather prediction
-sensor:
-  - platform: yr
-
 # Text to speech
 tts:
   - platform: google
@@ -68,20 +64,14 @@ cloud:
 
 group: !include groups.yaml
 automation: !include automations.yaml
-    
 script: !include scripts.yaml
+sensor: !include sensors.yaml
+input_boolean: !include input_booleans.yaml
+light: !include lights.yaml
+switch: !include switches.yaml
+shell_command: !include shell_commands.yaml
+media_player: !include media_players.yaml
+timer: !include timers.yaml
 
 ifttt:
   key: bYOXYE9RbodVENDbWi1Ulz6jA0A1NApz0iS_uKLP0TX
-
-input_boolean:
-  lifx_contact:
-    name: LIFX switch
-    initial: off
-
-camera:
-  - platform: foscam
-    ip: 14.176.200.78
-    port: 93
-    username: ics
-    password: Ics@12345
