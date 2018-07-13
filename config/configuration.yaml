@@ -61,6 +61,15 @@ tts:
 
 # Cloud
 cloud:
+  alexa:
+    filter:
+      include_entities:
+        - light.turn_on
+
+#duck dns
+duckdns:
+  domain: cas-hassio.duckdns.org
+  access_token: e45e624f-5c0f-4f5f-87c0-acdf09ccd99f
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -71,7 +80,10 @@ light: !include lights.yaml
 switch: !include switches.yaml
 shell_command: !include shell_commands.yaml
 media_player: !include media_players.yaml
-timer: !include timers.yaml
+device_tracker: !include device_trackers.yaml
 
 ifttt:
   key: bYOXYE9RbodVENDbWi1Ulz6jA0A1NApz0iS_uKLP0TX
+
+android_ip_webcam:
+  - host: 192.168.1.105

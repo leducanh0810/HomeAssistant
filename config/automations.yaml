@@ -1,119 +1,23 @@
-- id: '1530971773221'
-  alias: auto_cam_motion_on_tech_turn
-  trigger:
-  - at: '6:01'
-    platform: time
-  - at: '13:01'
-    platform: time
-  condition: []
-  action:
-  - service: shell_command.cam_tech_motion_turn_on
-- id: '1530971858679'
-  alias: auto_cam_motion_on_account_turn
-  trigger:
-  - at: '6:01'
-    platform: time
-  - at: '13:01'
-    platform: time
-  condition: []
-  action:
-  - service: shell_command.cam_account_motion_turn_on
-- id: '1530972048978'
-  alias: auto_cam_motion_on_recep_turn
-  trigger:
-  - at: '6:01'
-    platform: time
-  condition: []
-  action:
-  - service: shell_command.cam_recep_motion_turn_on
-- id: '1530972254852'
-  alias: auto_cam_motion_off_tech_timer_start
-  trigger:
-  - entity_id: sensor.camera_tech_motion
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data:
-      entity_id: timer.cam_tech_motion_off
-    service: timer.start
-- id: '1530972459277'
-  alias: auto_cam_motion_off_account_timer_start
-  trigger:
-  - entity_id: sensor.camera_account_motion
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data:
-      entity_id: timer.cam_account_motion_off
-    service: timer.start
-- id: '1530972579940'
-  alias: auto_cam_motion_off_recep_timer_start
-  trigger:
-  - entity_id: sensor.camera_recep_motion
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition: []
-  action:
-  - data:
-      entity_id: timer.cam_recep_motion_off
-    service: timer.start
-- id: '1530972814866'
-  alias: auto_cam_motion_off_tech_time_restart
-  trigger:
-  - entity_id: sensor.camera_tech_motion
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      duration: 00:00:00
-      entity_id: timer.cam_tech_motion_off
-    service: timer.start
-- id: '1530972923626'
-  alias: auto_cam_motion_off_account_time_restart
-  trigger:
-  - entity_id: sensor.camera_account_motion
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      duration: 00:00:00
-      entity_id: timer.cam_account_motion_off
-    service: timer.start
-- id: '1530973006704'
-  alias: auto_cam_motion_off_recep_time_restart
-  trigger:
-  - entity_id: sensor.camera_recep_motion
-    from: 'off'
-    platform: state
-    to: 'on'
-  condition: []
-  action:
-  - data:
-      duration: 00:00:00
-    service: timer.start
 - id: '1530973188375'
-  alias: auto_light_cps_turn_on_day
+  alias: auto_light_turn_on_cps
   trigger:
   - entity_id: sensor.camera_tech_motion
-    from: 'off'
     platform: state
     to: 'on'
   condition:
-  - condition: state
-    entity_id: input_boolean.light_cps_status
-    state: 'off'
-  - condition: state
-    entity_id: sensor.time_work_boolean
-    state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.light_cps_status
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: sensor.time_work_boolean
+        state: 'on'
+      - condition: state
+        entity_id: sensor.time_night_boolean
+        state: 'on'
   action:
   - data:
       event: turn_on_cps
@@ -122,19 +26,25 @@
       entity_id: input_boolean.light_cps_status
     service: input_boolean.turn_on
 - id: '1530973462333'
-  alias: auto_light_account_turn_on_day
+  alias: auto_light_turn_on_account
   trigger:
   - entity_id: sensor.camera_account_motion
-    from: 'off'
     platform: state
     to: 'on'
   condition:
-  - condition: state
-    entity_id: input_boolean.light_account_status
-    state: 'off'
-  - condition: state
-    entity_id: sensor.time_work_boolean
-    state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.light_account_status
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: sensor.time_work_boolean
+        state: 'on'
+      - condition: state
+        entity_id: sensor.time_night_boolean
+        state: 'on'
   action:
   - data:
       event: turn_on_account
@@ -143,53 +53,121 @@
       entity_id: input_boolean.light_account_status
     service: input_boolean.turn_on
 - id: '1530973588722'
-  alias: auto_light_recep_turn_on_day
+  alias: auto_light_turn_on_recep
   trigger:
   - entity_id: sensor.camera_recep_motion
-    from: 'off'
     platform: state
     to: 'on'
   condition:
-  - condition: state
-    entity_id: input_boolean.light_recep_status
-    state: 'off'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.light_recep_status
+      state: 'off'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: sensor.time_work_boolean
+        state: 'on'
+      - condition: state
+        entity_id: sensor.time_night_boolean
+        state: 'on'
+  action:
+  - data: {}
+    service: script.turnon_light_day_recep
+- id: '1530973778241'
+  alias: auto_light_turn_off_day_cps
+  trigger:
+  - entity_id: sensor.camera_tech_motion
+    for:
+      minutes: 2
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
   - condition: state
     entity_id: sensor.time_work_boolean
     state: 'on'
   action:
-  - data:
-      event: turn_on_recep
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_recep_status
-    service: input_boolean.turn_on
-- id: '1530973778241'
-  alias: auto_light_cps_turn_off
+  - service: script.turnoff_light_day_cps
+- id: '1530973778242'
+  alias: auto_light_turn_off_night_cps
   trigger:
-  - entity_id: timer.cam_tech_motion_off
-    from: active
+  - entity_id: sensor.camera_tech_motion
+    for:
+      minutes: 2
+    from: 'on'
     platform: state
-    to: idle
-  condition: []
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.time_night_boolean
+    state: 'on'
   action:
-  - data:
-      event: turn_off_cps
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_cps_status
-    service: input_boolean.turn_off
+  - service: script.turnoff_light_night_cps
 - id: '1530973877547'
-  alias: auto_light_account_turn_off
+  alias: auto_light_turn_off_day_account
   trigger:
-  - entity_id: timer.cam_account_motion_off
-    from: active
+  - entity_id: sensor.camera_account_motion
+    for:
+      minutes: 2
+    from: 'on'
     platform: state
-    to: idle
-  condition: []
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.time_work_boolean
+    state: 'on'
   action:
-  - data:
-      event: turn_off_account
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_account_status
-    service: input_boolean.turn_off
+  - alias: ''
+    data: {}
+    service: script.turnoff_light_day_account
+- id: '1530973877548'
+  alias: auto_light_turn_off_night_account
+  trigger:
+  - entity_id: sensor.camera_account_motion
+    for:
+      minutes: 2
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.time_night_boolean
+    state: 'on'
+  action:
+  - alias: ''
+    data: {}
+    service: script.turnoff_light_night_account
+- id: '1531018872722'
+  alias: auto_light_turn_off_day_recep
+  trigger:
+  - entity_id: sensor.camera_motion_all
+    for:
+      minutes: 2
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.time_work_boolean
+    state: 'on'
+  action:
+  - data: {}
+    service: script.turnoff_light_day_recep
+- id: '1531018872723'
+  alias: auto_light_turn_off_night_recep
+  trigger:
+  - entity_id: sensor.camera_motion_all
+    for:
+      minutes: 2
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: sensor.time_night_boolean
+    state: 'on'
+  action:
+  - data: {}
+    service: script.turnoff_light_night_recep

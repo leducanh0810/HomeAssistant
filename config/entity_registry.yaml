@@ -8,3 +8,13 @@ light.light_meeting_table:
   name:
   platform: lifx
   unique_id: d0:73:d5:31:4c:69
+media_player.home_mini:
+  config_entry_id: 95efdfc435b3414c9852d2f5ac6099fe
+  name:
+  platform: cast
+  unique_id: 85ba8c6b-bb21-81dd-2548-840122394eb5
+media_player.home_group:
+  config_entry_id: 95efdfc435b3414c9852d2f5ac6099fe
+  name:
+  platform: cast
+  unique_id: 1aff4c07-7692-450f-8f44-c8837b734689
