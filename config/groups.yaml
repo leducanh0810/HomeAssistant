@@ -1,0 +1,118 @@
+default_view:
+  #view: yes
+  icon: mdi:home
+  entities:
+    - group.camera
+    - group.weather
+    - group.media_player
+    - group.automation
+camera:
+  view: yes
+  name: Camera
+  entities:
+    - group.sensor
+    - group.input_boolean
+sensor:
+  name: Sensor
+  entities:
+    - sensor.camera_tech_motion
+    - sensor.camera_recep_motion
+    - sensor.camera_account_motion
+    - sensor.camera_motion_all
+    - sensor.camera_tech_irled
+    - sensor.camera_recep_irled
+    - sensor.camera_account_irled
+    - sensor.time_work_boolean
+    - sensor.time_night_boolean
+    - sensor.time_lunch_boolean
+input_boolean:
+  name: Lighting Status
+  entities:
+    - input_boolean.light_account_status
+    - input_boolean.light_cps_status
+    - input_boolean.light_recep_status
+    - input_boolean.light_ics_status
+weather:
+  view: yes
+  name: Weather
+  entities:
+    - group.sensor_raw
+    - group.sensor_use
+sensor_raw:
+  name: Weather Sensor raw
+  entities:
+    - sensor.dark_sky_apparent_temperature
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_daily_max_precip_intensity
+    - sensor.dark_sky_daily_summary
+    - sensor.dark_sky_daytime_high_apparent_temperature
+    - sensor.dark_sky_daytime_high_temperature
+    - sensor.dark_sky_dew_point
+    - sensor.dark_sky_hourly_summary
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_icon
+    - sensor.dark_sky_minutely_summary
+    - sensor.dark_sky_nearest_storm_distance
+    - sensor.dark_sky_overnight_low_apparent_temperature
+    - sensor.dark_sky_overnight_low_temperature
+    - sensor.dark_sky_ozone
+    - sensor.dark_sky_precip
+    - sensor.dark_sky_precip_accumulation
+    - sensor.dark_sky_precip_intensity
+    - sensor.dark_sky_precip_probability
+    - sensor.dark_sky_pressure
+    - sensor.dark_sky_summary
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_uv_index
+    - sensor.dark_sky_visibility
+    - sensor.dark_sky_wind_bearing
+    - sensor.dark_sky_wind_speed
+    - sun.sun
+sensor_use:
+  name: Weather Sensor Will Use
+  entities:
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_humidity
+    - sensor.dark_sky_cloud_coverage
+    - sensor.dark_sky_icon
+    - sensor.dark_sky_uv_index
+    - sensor.dark_sky_wind_speed
+    - sensor.dark_sky_hourly_summary
+    - sun.sun
+media_player:
+  view: yes
+  name: Media player
+  entities:
+    - media_player.office_tv
+    - media_player.officer_speaker
+automation:
+  view: yes
+  name: Automation
+  entities:
+    - group.automationlist
+    - group.scriptlist
+automationlist:
+  name: Automation List
+  entities:
+    - automation.auto_light_turn_off_account
+    - automation.auto_light_turn_off_cps
+    - automation.auto_light_turn_off_recep
+    - automation.auto_light_turn_on_account
+    - automation.auto_light_turn_on_cps
+    - automation.auto_light_turn_on_recep
+    - automation.auto_turn_on_automation_at_lunch_time
+    - automation.auto_turn_on_automation_at_night_time
+scriptlist:
+  name: Script List
+  entities:
+    - script.turnoff_light_day_account
+    - script.turnoff_light_day_cps
+    - script.turnoff_light_day_recep
+    - script.turnoff_light_night_account
+    - script.turnoff_light_night_cps
+    - script.turnoff_light_night_recep
+    - script.turnon_automation_at_lunch
+    - script.turnon_light_day_account
+    - script.turnon_light_day_cps
+    - script.turnon_light_day_recep
+    - script.turnon_light_night_recep

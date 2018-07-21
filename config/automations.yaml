@@ -1,5 +1,4 @@
-- id: '1530973188375'
-  alias: auto_light_turn_on_cps
+- alias: auto_light_turn_on_cps
   trigger:
   - entity_id: sensor.camera_tech_motion
     platform: state
@@ -19,14 +18,9 @@
         entity_id: sensor.time_night_boolean
         state: 'on'
   action:
-  - data:
-      event: turn_on_cps
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_cps_status
-    service: input_boolean.turn_on
-- id: '1530973462333'
-  alias: auto_light_turn_on_account
+  - service: script.turn_on
+    entity_id: script.turnon_light_day_cps
+- alias: auto_light_turn_on_account
   trigger:
   - entity_id: sensor.camera_account_motion
     platform: state
@@ -46,14 +40,9 @@
         entity_id: sensor.time_night_boolean
         state: 'on'
   action:
-  - data:
-      event: turn_on_account
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_account_status
-    service: input_boolean.turn_on
-- id: '1530973588722'
-  alias: auto_light_turn_on_recep
+  - service: script.turn_on
+    entity_id: script.turnon_light_day_account
+- alias: auto_light_turn_on_recep
   trigger:
   - entity_id: sensor.camera_recep_motion
     platform: state
@@ -72,102 +61,124 @@
       - condition: state
         entity_id: sensor.time_night_boolean
         state: 'on'
+      - condition: state
+        entity_id: sensor.time_lunch_boolean
+        state: 'on'
   action:
-  - data: {}
-    service: script.turnon_light_day_recep
-- id: '1530973778241'
-  alias: auto_light_turn_off_day_cps
+  - service: script.turn_on
+    data_template:
+      entity_id: >-
+        {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','off')) %}
+          script.turnon_light_day_recep
+        {% elif (is_state('sensor.time_night_boolean','on') or ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','on')))) %}
+          script.turnon_light_night_recep
+        {% endif %}
+- alias: auto_light_turn_off_cps
   trigger:
   - entity_id: sensor.camera_tech_motion
     for:
-      minutes: 2
-    from: 'on'
+      minutes: 1
     platform: state
     to: 'off'
   condition:
-  - condition: state
-    entity_id: sensor.time_work_boolean
-    state: 'on'
+  - condition: and
+    conditions:
+      - condition: state
+        entity_id: input_boolean.light_cps_status
+        state: 'on'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: sensor.time_work_boolean
+          state: 'on'
+        - condition: state
+          entity_id: sensor.time_night_boolean
+          state: 'on'
+        - condition: state
+          entity_id: sensor.time_lunch_boolean
+          state: 'on'
   action:
-  - service: script.turnoff_light_day_cps
-- id: '1530973778242'
-  alias: auto_light_turn_off_night_cps
-  trigger:
-  - entity_id: sensor.camera_tech_motion
-    for:
-      minutes: 2
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: sensor.time_night_boolean
-    state: 'on'
-  action:
-  - service: script.turnoff_light_night_cps
-- id: '1530973877547'
-  alias: auto_light_turn_off_day_account
-  trigger:
-  - entity_id: sensor.camera_account_motion
-    for:
-      minutes: 2
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: sensor.time_work_boolean
-    state: 'on'
-  action:
-  - alias: ''
-    data: {}
-    service: script.turnoff_light_day_account
-- id: '1530973877548'
-  alias: auto_light_turn_off_night_account
+  - service: script.turn_on
+    data_template:
+      entity_id: >-
+         {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_tech_irled','off')) %}
+          script.turnoff_light_day_cps
+         {% elif (is_state('sensor.time_night_boolean','on') or ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_tech_irled','on')))) %}
+          script.turnoff_light_night_cps
+         {% endif %}
+- alias: auto_light_turn_off_account
   trigger:
   - entity_id: sensor.camera_account_motion
     for:
-      minutes: 2
-    from: 'on'
+      minutes: 1
     platform: state
     to: 'off'
   condition:
-  - condition: state
-    entity_id: sensor.time_night_boolean
-    state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.light_account_status
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: sensor.time_work_boolean
+        state: 'on'
+      - condition: state
+        entity_id: sensor.time_night_boolean
+        state: 'on'
   action:
-  - alias: ''
-    data: {}
-    service: script.turnoff_light_night_account
-- id: '1531018872722'
-  alias: auto_light_turn_off_day_recep
+  - service: script.turn_on
+    data_template:
+      entity_id: >-
+         {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','off')) %}
+          script.turnoff_light_day_account
+         {% elif (is_state('sensor.time_night_boolean','on') or ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','on')))) %}
+          script.turnoff_light_night_account
+         {% endif %}
+- alias: auto_light_turn_off_recep
   trigger:
-  - entity_id: sensor.camera_motion_all
+  - entity_id: sensor.camera_recep_motion
     for:
-      minutes: 2
-    from: 'on'
+      minutes: 1
     platform: state
     to: 'off'
   condition:
-  - condition: state
-    entity_id: sensor.time_work_boolean
-    state: 'on'
+  - condition: and
+    conditions:
+    - condition: state
+      entity_id: input_boolean.light_recep_status
+      state: 'on'
+    - condition: or
+      conditions:
+      - condition: state
+        entity_id: sensor.time_work_boolean
+        state: 'on'
+      - condition: state
+        entity_id: sensor.time_night_boolean
+        state: 'on'
   action:
-  - data: {}
-    service: script.turnoff_light_day_recep
-- id: '1531018872723'
-  alias: auto_light_turn_off_night_recep
+  - service: script.turn_on
+    data_template:
+      entity_id: >-
+         {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','off')) %}
+          script.turnoff_light_day_recep
+         {% elif (is_state('sensor.time_night_boolean','on') or ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','on')))) %}
+          script.turnoff_light_night_recep
+         {% endif %}
+- alias: auto_turn_on_automation_at_lunch_time
   trigger:
-  - entity_id: sensor.camera_motion_all
-    for:
-      minutes: 2
-    from: 'on'
-    platform: state
-    to: 'off'
-  condition:
-  - condition: state
-    entity_id: sensor.time_night_boolean
-    state: 'on'
+  - platform: time
+    at: '12:00:10'
   action:
-  - data: {}
-    service: script.turnoff_light_night_recep
+  - service: script.turn_on
+    data:
+      entity_id: script.turnon_automation_at_lunch
+- alias: auto_turn_on_automation_at_night_time
+  trigger:
+  - platform: time
+    at: '17:00:10'
+  action:
+  - service: script.turn_on
+    data:
+      entity_id: script.turnon_automation_at_lunch

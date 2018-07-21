@@ -42,9 +42,9 @@
   command: 'curl -k --silent "https://192.168.1.22:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=infraLedState>).*?(?=</infraLedState>)"'
   value_template: >-
     {%- if value == "0" -%}
-      Off
+      off
     {%- elif value == "1" -%}
-      On
+      on
     {%- endif -%}
   scan_interval: 30
 - platform: command_line

@@ -1,0 +1,8 @@
+- name: Anh_Home
+  latitude: 16.062346
+  longitude: 108.210568
+
+- name: Home
+  latitude: 16.055318
+  longitude: 108.221927
+  icon: mdi:account-multiple

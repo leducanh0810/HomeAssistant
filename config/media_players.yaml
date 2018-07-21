@@ -16,4 +16,4 @@
   wake_on_lan:
     service: wake_on_lan.send_magic_packet #Not operation
     data:
-      mac: C8:08:E9:DE:FB:0E
+      mac: C8-08-E9-DE-FB-0E
