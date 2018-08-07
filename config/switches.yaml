@@ -1,5 +1,0 @@
-- platform: xiaomi_miio
-  name: Origdnal Xiaomi Mi Smart WiFi Socket
-  host: 192.168.1.101
-  token: b01dc25276d8e1442ce92d87a863b8ac
-  model: zimi.powerstrip.v2

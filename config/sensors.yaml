@@ -153,3 +153,28 @@
     - apparent_temperature_low
     - precip_intensity_max
     - uv_index
+
+- platform: mqtt
+  name: "xiaomi_zigbee_motion_battery"
+  state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: '%'
+  value_template: "{{ value_json.battery }}"
+- platform: mqtt
+  name: "xiaomi_zigbee_motion_voltage"
+  state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: 'V'
+  value_template: "{{ value_json.voltage }}"
+- platform: mqtt
+  name: "xiaomi_zigbee_tempt_battery"
+  state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: '%'
+  value_template: "{{ value_json.battery }}"
+- platform: mqtt
+  name: "xiaomi_zigbee_tempt_voltage"
+  state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
+  availability_topic: "zigbee2mqtt/bridge/state"
+  unit_of_measurement: 'V'
+  value_template: "{{ value_json.voltage }}"

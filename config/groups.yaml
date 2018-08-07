@@ -25,6 +25,7 @@ sensor:
     - sensor.time_work_boolean
     - sensor.time_night_boolean
     - sensor.time_lunch_boolean
+    - binary_sensor.xiaomi_motion_sensor
 input_boolean:
   name: Lighting Status
   entities:
@@ -72,13 +73,14 @@ sensor_use:
   name: Weather Sensor Will Use
   entities:
     - sensor.dark_sky_temperature
+    - sensor.xiaomi_zigbee_tempt_temperature
     - sensor.dark_sky_humidity
+    - sensor.xiaomi_zigbee_tempt_humidity
     - sensor.dark_sky_cloud_coverage
     - sensor.dark_sky_icon
     - sensor.dark_sky_uv_index
     - sensor.dark_sky_wind_speed
     - sensor.dark_sky_hourly_summary
-    - sun.sun
 media_player:
   view: yes
   name: Media player

@@ -1,3 +1,11 @@
+turnoff_light_ics:
+  sequence:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.light_ics_status
+  - service: ifttt.trigger
+    data:
+      event: turn_off_ics
 turnoff_light_night_cps:
   sequence:
   - service: ifttt.trigger
@@ -72,6 +80,14 @@ turnoff_light_day_recep:
   - service: shell_command.cam_recep_motion_turn_off
   - delay: 00:00:07
   - service: shell_command.cam_recep_motion_turn_on_inlightoff_day
+turnon_light_ics:
+  sequence:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.light_ics_status
+  - service: ifttt.trigger
+    data:
+      event: turn_on_ics
 turnon_light_day_cps:
   sequence:
   - service: ifttt.trigger

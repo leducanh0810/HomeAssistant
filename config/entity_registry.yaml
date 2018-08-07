@@ -1,5 +1,5 @@
 media_player.officer_speaker:
-  config_entry_id: 05acbeae560541aba9df0219ceaf5081
+  config_entry_id: 6e0446e3806945f58bf8d95efef1f382
   name:
   platform: cast
   unique_id: 74270cd8-3b85-eb2b-9a08-bd2d0dcde86d
@@ -18,3 +18,23 @@ media_player.home_group:
   name:
   platform: cast
   unique_id: 1aff4c07-7692-450f-8f44-c8837b734689
+sensor.0x00158d0001c16749_temperature:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: 0x00158d0001c16749_temperature_zigbee2mqtt
+sensor.0x00158d0001c16749_humidity:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: 0x00158d0001c16749_humidity_zigbee2mqtt
+sensor.0x00158d0001f54eaf_power:
+  config_entry_id:
+  name:
+  platform: mqtt
+  unique_id: 0x00158d0001f54eaf_power_zigbee2mqtt
+switch.0x00158d0001f54eaf_switch:
+  config_entry_id:
+  name: Xiaomi_Zigbee_Plug
+  platform: mqtt
+  unique_id: 0x00158d0001f54eaf_switch_zigbee2mqtt

@@ -77,7 +77,7 @@ script: !include scripts.yaml
 sensor: !include sensors.yaml
 input_boolean: !include input_booleans.yaml
 light: !include lights.yaml
-switch: !include switches.yaml
+#switch: !include switches.yaml
 shell_command: !include shell_commands.yaml
 media_player: !include media_players.yaml
 device_tracker: !include device_trackers.yaml
@@ -85,3 +85,14 @@ zone: !include zones.yaml
 
 ifttt:
   key: bYOXYE9RbodVENDbWi1Ulz6jA0A1NApz0iS_uKLP0TX
+
+mqtt:
+  discovery: true
+  broker: 127.0.0.1
+  port: 1883
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
