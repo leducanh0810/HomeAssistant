@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -78,6 +78,7 @@ sensor: !include sensors.yaml
 input_boolean: !include input_booleans.yaml
 light: !include lights.yaml
 #switch: !include switches.yaml
+camera: !include cameras.yaml
 shell_command: !include shell_commands.yaml
 media_player: !include media_players.yaml
 device_tracker: !include device_trackers.yaml
@@ -90,9 +91,12 @@ mqtt:
   discovery: true
   broker: 127.0.0.1
   port: 1883
+  username: username
+  password: password
   birth_message:
     topic: 'hass/status'
     payload: 'online'
   will_message:
     topic: 'hass/status'
     payload: 'offline'
+

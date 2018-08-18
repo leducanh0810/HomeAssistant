@@ -38,3 +38,13 @@ switch.0x00158d0001f54eaf_switch:
   name: Xiaomi_Zigbee_Plug
   platform: mqtt
   unique_id: 0x00158d0001f54eaf_switch_zigbee2mqtt
+media_player.googlehome6371:
+  config_entry_id: 6e0446e3806945f58bf8d95efef1f382
+  name:
+  platform: cast
+  unique_id: 5500e58a-cb61-89ff-0574-c6edcb11ed78
+media_player.googlehome4493:
+  config_entry_id: 6e0446e3806945f58bf8d95efef1f382
+  name:
+  platform: cast
+  unique_id: 2141734d-0bcb-7ff7-6559-173fbe958feb

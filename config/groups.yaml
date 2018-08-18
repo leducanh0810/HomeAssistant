@@ -1,17 +1,19 @@
 default_view:
-  #view: yes
+  # view: yes
   icon: mdi:home
   entities:
     - group.camera
     - group.weather
     - group.media_player
     - group.automation
+    - group.monitor
 camera:
   view: yes
   name: Camera
   entities:
     - group.sensor
     - group.input_boolean
+    - group.camera_monitor
 sensor:
   name: Sensor
   entities:
@@ -33,6 +35,12 @@ input_boolean:
     - input_boolean.light_cps_status
     - input_boolean.light_recep_status
     - input_boolean.light_ics_status
+camera_monitor:
+  name: Camera monitor
+  entities:
+    - camera.camera_technical
+    - camera.camera_reception
+    - camera.camera_account
 weather:
   view: yes
   name: Weather
@@ -104,6 +112,8 @@ automationlist:
     - automation.auto_light_turn_on_recep
     - automation.auto_turn_on_automation_at_lunch_time
     - automation.auto_turn_on_automation_at_night_time
+    - automation.auto_light_turn_on_ics
+    - automation.auto_light_turn_off_ics
 scriptlist:
   name: Script List
   entities:
@@ -113,8 +123,68 @@ scriptlist:
     - script.turnoff_light_night_account
     - script.turnoff_light_night_cps
     - script.turnoff_light_night_recep
+    - script.turnoff_light_ics
     - script.turnon_automation_at_lunch
     - script.turnon_light_day_account
     - script.turnon_light_day_cps
     - script.turnon_light_day_recep
     - script.turnon_light_night_recep
+    - script.turnon_light_ics
+monitor:
+    view: yes
+    name: Monitor Devices
+    entities:
+      - group.device_tracker_ICS
+      - group.device_tracker_CPS
+      - group.device_tracker_RECEP
+      - group.device_tracker_ACC
+      - group.device_tracker_PLAN
+      - group.device_tracker_check
+device_tracker_ICS:
+  name: Devices Tracker ICS Room
+  entities:
+    - device_tracker.2047dab928ec
+    - device_tracker.6c8814a83b44
+    - device_tracker.a44e311aaa90
+    - device_tracker.a088b437518c
+    - device_tracker.1c994c60ade6
+device_tracker_CPS:
+  name: Devices Tracker CPS Room
+  entities:
+    - device_tracker.5ce0c5a4d29c
+    - device_tracker.448500782d8c
+    - device_tracker.b072bf69f0d7
+    - device_tracker.448500c097de
+    - device_tracker.c81ee73264f7
+    - device_tracker.24f6779643a5
+    - device_tracker.68ed430b4ffd
+    - device_tracker.283b827e6fb0
+device_tracker_RECEP:
+  name: Devices Tracker Reception Room
+  entities:
+    - device_tracker.842b2b8c9efd
+device_tracker_ACC:
+  name: Devices Tracker Account Room
+  entities:
+    - device_tracker.8ca98287185a
+    - device_tracker.c88550871dfb
+    - device_tracker.f81654492bb3
+    - device_tracker.88d50ca21f6d
+    - device_tracker.9cf48e65b649
+    - device_tracker.8ca9828ea2a2
+    - device_tracker.a4c361e5d190
+    - device_tracker.34028690cc2f
+device_tracker_PLAN:
+  name: Devices Tracker Plan Room
+  entities:
+    - device_tracker.e4a471b517fb
+    - device_tracker.6067205d4fc8
+    - device_tracker.1c5cf2846836
+    - device_tracker.d033116cf40e
+device_tracker_check:
+  name: Devices Tracking Check
+  entities:
+    - device_tracker.64a5c3d3424a
+    - device_tracker.a01828cd471d
+    - device_tracker.8c8ef2c164c4
+    - device_tracker.68dbcaa40166

@@ -97,9 +97,6 @@ turnon_light_day_cps:
     data:
       entity_id: input_boolean.light_cps_status
   - service: shell_command.cam_tech_motion_turn_on_inlighton
-  - service: automation.turn_off
-    data:
-      entity_id: automation.auto_light_turn_off_cps
 turnon_light_day_account:
   sequence:
   - data:
@@ -109,9 +106,6 @@ turnon_light_day_account:
       entity_id: input_boolean.light_account_status
     service: input_boolean.turn_on
   - service: shell_command.cam_account_motion_turn_on_inlighton
-  - service: automation.turn_off
-    data:
-      entity_id: automation.auto_light_turn_off_account
 turnon_light_day_recep:
   sequence:
   - data:
@@ -121,9 +115,6 @@ turnon_light_day_recep:
       entity_id: input_boolean.light_recep_status
     service: input_boolean.turn_on
   - service: shell_command.cam_recep_motion_turn_on_inlighton
-  - service: automation.turn_off
-    data:
-        entity_id: automation.auto_light_turn_off_recep
 turnon_light_night_recep:
   sequence:
   - service: shell_command.cam_account_motion_turn_off

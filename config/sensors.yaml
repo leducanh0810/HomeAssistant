@@ -1,6 +1,6 @@
 # Sensors Configuration
-
 - platform: yr
+# Camera Sensors
 - platform: command_line
   name: "Camera recep motion"
   command: 'curl -k --silent "https://192.168.1.22:443/cgi-bin/CGIProxy.fcgi?cmd=getDevState&usr=ics&pwd=Ics@12345" | grep -oP "(?<=motionDetectAlarm>).*?(?=</motionDetectAlarm>)"'
@@ -72,7 +72,7 @@
     camera_motion_all:
       friendly_name: "Camera motion all"
       value_template: >-
-        {%- if ((is_state('sensor.camera_account_motion', 'off') and is_state('sensor.camera_recep_motion', 'off') and is_state('sensor.camera_tech_motion', 'off') and (now().weekday() < 6)) or (is_state('sensor.camera_recep_motion', 'off') and (now().weekday() == 6))) -%}
+        {%- if ((is_state('sensor.camera_account_motion', 'off') and is_state('sensor.camera_recep_motion', 'off') and is_state('binary_sensor.xiaomi_motion_sensor','off') and is_state('sensor.camera_tech_motion', 'off') and (now().weekday() < 6)) or (is_state('sensor.camera_recep_motion', 'off') and (now().weekday() == 6))) -%}
           off
         {%- else -%}
           on
@@ -109,7 +109,7 @@
     time_lunch_boolean:
       friendly_name: "Sensor for time lunch"
       value_template: >-
-        {%- if ((now().hour >= 12) and (now().hour < 13)) -%}
+        {%- if ((now().hour >= 11) and (now().hour < 13)) -%}
           on
         {%- else -%}
           off
@@ -154,6 +154,7 @@
     - precip_intensity_max
     - uv_index
 
+# Xiaomi Sensors for get batterry
 - platform: mqtt
   name: "xiaomi_zigbee_motion_battery"
   state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
@@ -178,3 +179,12 @@
   availability_topic: "zigbee2mqtt/bridge/state"
   unit_of_measurement: 'V'
   value_template: "{{ value_json.voltage }}"
+
+# Mobile Phone Sensors for get batterry
+- platform: mqtt
+  state_topic: "owntracks/username/anh"
+  name: "ICS ANHLD AndroidPhone Battery"
+  unit_of_measurement: "%"
+  value_template: '{{ value_json.batt }}'
+  device_class: battery
+  scan_interval: 60

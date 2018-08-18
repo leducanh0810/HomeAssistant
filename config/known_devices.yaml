@@ -1,7 +1,695 @@
-icsanh_phone:
+e894f6064d5b:
   hide_if_away: false
-  icon: mdi:account
-  mac:
-  name: ICSAnh
+  icon:
+  mac: E8:94:F6:06:4D:5B
+  name: e894f6064d5b
+  picture:
+  track: true
+
+5ce0c5a4d29c:
+  hide_if_away: false
+  icon:
+  mac: 5C:E0:C5:A4:D2:9C
+  name: CPS_TRUNGTT_PC
+  picture:
+  track: true
+
+ac9b0a8e2f34:
+  hide_if_away: false
+  icon:
+  mac: AC:9B:0A:8E:2F:34
+  name: ac9b0a8e2f34
+  picture:
+  track: true
+
+000c29d29f5e:
+  hide_if_away: false
+  icon:
+  mac: 00:0C:29:D2:9F:5E
+  name: CAS_PC_2
+  picture:
+  track: false
+
+989096ae74af:
+  hide_if_away: false
+  icon:
+  mac: 98:90:96:AE:74:AF
+  name: CAS_PC
+  picture:
+  track: false
+
+6067205d4fc8:
+  hide_if_away: false
+  icon:
+  mac: 60:67:20:5D:4F:C8
+  name: PLAN_TUANNV_PC
+  picture:
+  track: true
+
+945330bd3f3a:
+  hide_if_away: false
+  icon:
+  mac: 94:53:30:BD:3F:3A
+  name: CAS_Print_2
+  picture:
+  track: false
+
+a44e311aaa90:
+  hide_if_away: false
+  icon:
+  mac: A4:4E:31:1A:AA:90
+  name: ICS_CHAUPV_PC
+  picture:
+  track: true
+
+94b10a137ed7:
+  hide_if_away: false
+  icon:
+  mac: 94:B1:0A:13:7E:D7
+  name: 94b10a137ed7
+  picture:
+  track: true
+
+00626e85dbeb:
+  hide_if_away: false
+  icon:
+  mac: 00:62:6E:85:DB:EB
+  name: CAM_Account
+  picture:
+  track: false
+
+842b2b8c9efd:
+  hide_if_away: false
+  icon:
+  mac: 84:2B:2B:8C:9E:FD
+  name: RECEP_PC
+  picture:
+  track: true
+
+8ca9828eaae0:
+  hide_if_away: false
+  icon:
+  mac: 8C:A9:82:8E:AA:E0
+  name: 8ca9828eaae0
+  picture:
+  track: true
+
+38f73d1e5460:
+  hide_if_away: false
+  icon:
+  mac: 38:F7:3D:1E:54:60
+  name: CAS_Alexa
+  picture:
+  track: false
+
+6476baac3e2a:
+  hide_if_away: false
+  icon:
+  mac: 64:76:BA:AC:3E:2A
+  name: 6476baac3e2a
+  picture:
+  track: true
+
+6c8814a83b44:
+  hide_if_away: false
+  icon:
+  mac: 6C:88:14:A8:3B:44
+  name: ICS_ANHLD_PC
+  picture:
+  track: true
+
+34028690cc2f:
+  hide_if_away: false
+  icon:
+  mac: 34:02:86:90:CC:2F
+  name: ACC_THANH_PC
+  picture:
+  track: true
+
+b072bf69f0d7:
+  hide_if_away: false
+  icon:
+  mac: B0:72:BF:69:F0:D7
+  name: CPS_TRUNGTT_Phone
+  picture:
+  track: true
+
+vigorrouter:
+  hide_if_away: false
+  icon:
+  mac: 00:1D:AA:88:11:A4
+  name: Vigor.router
+  picture:
+  track: false
+
+000c29965955:
+  hide_if_away: false
+  icon:
+  mac: 00:0C:29:96:59:55
+  name: CAS_PC_1
+  picture:
+  track: false
+
+34f64bbb56de:
+  hide_if_away: false
+  icon:
+  mac: 34:F6:4B:BB:56:DE
+  name: 34f64bbb56de
+  picture:
+  track: true
+
+448500c097de:
+  hide_if_away: false
+  icon:
+  mac: 44:85:00:C0:97:DE
+  name: PRODUCT_MYVT_PC
+  picture:
+  track: true
+
+741bb2707d67:
+  hide_if_away: false
+  icon:
+  mac: 74:1B:B2:70:7D:67
+  name: iphone_10
+  picture:
+  track: true
+
+605718e14466:
+  hide_if_away: false
+  icon:
+  mac: 60:57:18:E1:44:66
+  name: 605718e14466
+  picture:
+  track: true
+
+1c994c60ade6:
+  hide_if_away: false
+  icon:
+  mac: 1C:99:4C:60:AD:E6
+  name: ICS_CHAUPV_AndoidPhone
+  picture:
+  track: true
+
+f81654492bb3:
+  hide_if_away: false
+  icon:
+  mac: F8:16:54:49:2B:B3
+  name: EQUIP_UYENLTT_PC
+  picture:
+  track: true
+
+e4a7a056e627:
+  hide_if_away: false
+  icon:
+  mac: E4:A7:A0:56:E6:27
+  name: e4a7a056e627
+  picture:
+  track: true
+
+18a6f791503e:
+  hide_if_away: false
+  icon:
+  mac: 18:A6:F7:91:50:3E
+  name: 18a6f791503e
+  picture:
+  track: false
+
+245ebe18b3af:
+  hide_if_away: false
+  icon:
+  mac: 24:5E:BE:18:B3:AF
+  name: CAS_Nat
+  picture:
+  track: false
+
+a028edd129fc:
+  hide_if_away: false
+  icon:
+  mac: A0:28:ED:D1:29:FC
+  name: a028edd129fc
+  picture:
+  track: true
+
+8ca98287185a:
+  hide_if_away: false
+  icon:
+  mac: 8C:A9:82:87:18:5A
+  name: ACC_NGUYENNTT_PC
+  picture:
+  track: true
+
+00626e85db05:
+  hide_if_away: false
+  icon:
+  mac: 00:62:6E:85:DB:05
+  name: CAM_Recep
+  picture:
+  track: false
+
+d8f710c23096:
+  hide_if_away: false
+  icon:
+  mac: D8:F7:10:C2:30:96
+  name: CAS_Cortana
+  picture:
+  track: false
+
+d4503fb81321:
+  hide_if_away: false
+  icon:
+  mac: D4:50:3F:B8:13:21
+  name: android_4
+  picture:
+  track: true
+
+e4a471b517fb:
+  hide_if_away: false
+  icon:
+  mac: E4:A4:71:B5:17:FB
+  name: PLAN_MAUHV_PC
+  picture:
+  track: true
+
+b06ebfa9dc04:
+  hide_if_away: false
+  icon:
+  mac: B0:6E:BF:A9:DC:04
+  name: b06ebfa9dc04
+  picture:
+  track: true
+
+c88550871dfb:
+  hide_if_away: false
+  icon:
+  mac: C8:85:50:87:1D:FB
+  name: ACC_TUNGUYEN_IPhone
+  picture:
+  track: true
+
+a088b437518c:
+  hide_if_away: false
+  icon:
+  mac: A0:88:B4:37:51:8C
+  name: ICS_LAIPV_PC
+  picture:
+  track: true
+
+002673eb8a1e:
+  hide_if_away: false
+  icon:
+  mac: 00:26:73:EB:8A:1E
+  name: CAS_Print
+  picture:
+  track: false
+
+002673ebf46d:
+  hide_if_away: false
+  icon:
+  mac: 00:26:73:EB:F4:6D
+  name: CAS_Print_1
+  picture:
+  track: false
+
+2047dab928ec:
+  hide_if_away: false
+  icon:
+  mac: 20:47:DA:B9:28:EC
+  name: ICS_ANHLD_AndroidPhone
+  picture:
+  track: true
+
+88d50ca21f6d:
+  hide_if_away: false
+  icon:
+  mac: 88:D5:0C:A2:1F:6D
+  name: HR_KIM_Phone
+  picture:
+  track: true
+
+448500782d8c:
+  hide_if_away: false
+  icon:
+  mac: 44:85:00:78:2D:8C
+  name: PRODUCT_PC
+  picture:
+  track: true
+
+00626e6faa8a:
+  hide_if_away: false
+  icon:
+  mac: 00:62:6E:6F:AA:8A
+  name: CAM_TECH
+  picture:
+  track: false
+
+1c5cf2846836:
+  hide_if_away: false
+  icon:
+  mac: 1C:5C:F2:84:68:36
+  name: PLAN_TUANNV_IPhone
+  picture:
+  track: true
+
+843a4b039b78:
+  hide_if_away: false
+  icon:
+  mac: 84:3A:4B:03:9B:78
+  name: 843a4b039b78
+  picture:
+  track: true
+
+64a5c3d3424a:
+  hide_if_away: false
+  icon:
+  mac: 64:A5:C3:D3:42:4A
+  name: iphone_huyen_check
+  picture:
+  track: true
+
+48d6d58903f4:
+  hide_if_away: false
+  icon:
+  mac: 48:D6:D5:89:03:F4
+  name: CAS_Google_home
+  picture:
+  track: false
+
+a01828cd471d:
+  hide_if_away: false
+  icon:
+  mac: A0:18:28:CD:47:1D
+  name: ACC_Khanh_check
+  picture:
+  track: true
+
+68dbcaa40166:
+  hide_if_away: false
+  icon:
+  mac: 68:DB:CA:A4:01:66
+  name: HR_Nhung_Iphone
+  picture:
+  track: true
+
+24f6779643a5:
+  hide_if_away: false
+  icon:
+  mac: 24:F6:77:96:43:A5
+  name: BOD_TOANVQ_Iphone
+  picture:
+  track: true
+
+d0a63743fa7b:
+  hide_if_away: false
+  icon:
+  mac: D0:A6:37:43:FA:7B
+  name: ICS_ANHLD_IPhone
+  picture:
+  track: false
+
+cc20e816fe0f:
+  hide_if_away: false
+  icon:
+  mac: CC:20:E8:16:FE:0F
+  name: cc20e816fe0f
+  picture:
+  track: true
+
+283b827e6fb0:
+  hide_if_away: false
+  icon:
+  mac: 28:3B:82:7E:6F:B0
+  name: PRODUCT_DANHNT_PC
+  picture:
+  track: true
+
+a4c361e5d190:
+  hide_if_away: false
+  icon:
+  mac: A4:C3:61:E5:D1:90
+  name: ACC_THANH_Phone
+  picture:
+  track: true
+
+d033116cf40e:
+  hide_if_away: false
+  icon:
+  mac: D0:33:11:6C:F4:0E
+  name: PLAN_MAUHV_Iphone
+  picture:
+  track: true
+
+04db56208bac:
+  hide_if_away: false
+  icon:
+  mac: 04:DB:56:20:8B:AC
+  name: iphone_11
+  picture:
+  track: true
+
+5ce0c572095c:
+  hide_if_away: false
+  icon:
+  mac: 5C:E0:C5:72:09:5C
+  name: 5ce0c572095c
+  picture:
+  track: true
+
+c81ee73264f7:
+  hide_if_away: false
+  icon:
+  mac: C8:1E:E7:32:64:F7
+  name: PRODUCT_MYVT_Phone
+  picture:
+  track: true
+
+8ca9828ea2a2:
+  hide_if_away: false
+  icon:
+  mac: 8C:A9:82:8E:A2:A2
+  name: EQUIP_DANG_PC
+  picture:
+  track: true
+
+40e230c930cd:
+  hide_if_away: false
+  icon:
+  mac: 40:E2:30:C9:30:CD
+  name: 40e230c930cd
+  picture:
+  track: true
+
+348a7be816fc:
+  hide_if_away: false
+  icon:
+  mac: 34:8A:7B:E8:16:FC
+  name: ASSIS_DUNGVTK_Phone
+  picture:
+  track: true
+
+68ed430b4ffd:
+  hide_if_away: false
+  icon:
+  mac: 68:ED:43:0B:4F:FD
+  name: PRODUCT_MYVT_Blackberry
+  picture:
+  track: true
+
+90b0ede33709:
+  hide_if_away: false
+  icon:
+  mac: 90:B0:ED:E3:37:09
+  name: 90b0ede33709
+  picture:
+  track: true
+
+18f0e42d5486:
+  hide_if_away: false
+  icon:
+  mac: 18:F0:E4:2D:54:86
+  name: 18f0e42d5486
+  picture:
+  track: true
+
+a434d95a5546:
+  hide_if_away: false
+  icon:
+  mac: A4:34:D9:5A:55:46
+  name: a434d95a5546
+  picture:
+  track: true
+
+9cf48e65b649:
+  hide_if_away: false
+  icon:
+  mac: 9C:F4:8E:65:B6:49
+  name: EQUIP_DANG_Iphone
+  picture:
+  track: true
+
+e4a7a019e033:
+  hide_if_away: false
+  icon:
+  mac: E4:A7:A0:19:E0:33
+  name: e4a7a019e033
+  picture:
+  track: true
+
+dc4f2286026d:
+  hide_if_away: false
+  icon:
+  mac: DC:4F:22:86:02:6D
+  name: CAS_Sonoff_Switch
+  picture:
+  track: false
+
+dc6672ebe3cd:
+  hide_if_away: false
+  icon:
+  mac: DC:66:72:EB:E3:CD
+  name: dc6672ebe3cd
+  picture:
+  track: true
+
+6021c0717dd1:
+  hide_if_away: false
+  icon:
+  mac: 60:21:C0:71:7D:D1
+  name: 6021c0717dd1
+  picture:
+  track: true
+
+8c8ef2c164c4:
+  hide_if_away: false
+  icon:
+  mac: 8C:8E:F2:C1:64:C4
+  name: ACC_Account_Check_Hatinh
+  picture:
+  track: true
+
+606dc72bc5cb:
+  hide_if_away: false
+  icon:
+  mac: 60:6D:C7:2B:C5:CB
+  name: 606dc72bc5cb
+  picture:
+  track: true
+
+203956094aae:
+  hide_if_away: false
+  icon:
+  mac: 20:39:56:09:4A:AE
+  name: 203956094aae
+  picture:
+  track: true
+
+6c8814f884b0:
+  hide_if_away: false
+  icon:
+  mac: 6C:88:14:F8:84:B0
+  name: 6c8814f884b0
+  picture:
+  track: true
+
+0030a7146e23:
+  hide_if_away: false
+  icon:
+  mac: 00:30:A7:14:6E:23
+  name: CAS_router
+  picture:
+  track: false
+
+8cf5a3dd6806:
+  hide_if_away: false
+  icon:
+  mac: 8C:F5:A3:DD:68:06
+  name: 8cf5a3dd6806
+  picture:
+  track: true
+
+e8b1fc1159f9:
+  hide_if_away: false
+  icon:
+  mac: E8:B1:FC:11:59:F9
+  name: e8b1fc1159f9
+  picture:
+  track: true
+
+e82aea46ec2c:
+  hide_if_away: false
+  icon:
+  mac: E8:2A:EA:46:EC:2C
+  name: e82aea46ec2c
+  picture:
+  track: true
+
+b49cdf23260e:
+  hide_if_away: false
+  icon:
+  mac: B4:9C:DF:23:26:0E
+  name: b49cdf23260e
+  picture:
+  track: true
+
+60019483ce0a:
+  hide_if_away: false
+  icon:
+  mac: 60:01:94:83:CE:0A
+  name: 60019483ce0a
+  picture:
+  track: true
+
+2c2617035071:
+  hide_if_away: false
+  icon:
+  mac: 2C:26:17:03:50:71
+  name: 2c2617035071
+  picture:
+  track: true
+
+989096ae7d51:
+  hide_if_away: false
+  icon:
+  mac: 98:90:96:AE:7D:51
+  name: CAS_PC
+  picture:
+  track: false
+
+84c7ea730dce:
+  hide_if_away: false
+  icon:
+  mac: 84:C7:EA:73:0D:CE
+  name: 84c7ea730dce
+  picture:
+  track: true
+
+ac0d1be71525:
+  hide_if_away: false
+  icon:
+  mac: AC:0D:1B:E7:15:25
+  name: ac0d1be71525
+  picture:
+  track: true
+
+9c2ea1167b5b:
+  hide_if_away: false
+  icon:
+  mac: 9C:2E:A1:16:7B:5B
+  name: 9c2ea1167b5b
+  picture:
+  track: true
+
+4c3488605667:
+  hide_if_away: false
+  icon:
+  mac: 4C:34:88:60:56:67
+  name: 4c3488605667
+  picture:
+  track: true
+
+0021cc5e05bf:
+  hide_if_away: false
+  icon:
+  mac: 00:21:CC:5E:05:BF
+  name: 0021cc5e05bf
   picture:
   track: true
