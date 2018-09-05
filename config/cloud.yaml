@@ -1,0 +1,16 @@
+alexa:
+  filter:
+    include_entities:
+      - switch.light_sonoff_4chpro_cps
+      - switch.light_sonoff_4chpro_ics
+      - switch.light_sonoff_4chpro_reccep
+      - switch.light_sonoff_t1_plan
+      - switch.light_sonoff_t1_account
+google_actions:
+  filter:
+    include_entities:
+      - switch.light_sonoff_4chpro_cps
+      - switch.light_sonoff_4chpro_ics
+      - switch.light_sonoff_4chpro_reccep
+      - switch.light_sonoff_t1_plan
+      - switch.light_sonoff_t1_account

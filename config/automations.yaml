@@ -274,3 +274,37 @@
   - service: script.turn_on
     data:
       entity_id: script.turnon_automation_at_lunch
+
+- alias: "Power state on HA start-up"
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff1/power1"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff1/power2"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff1/power3"
+        payload: "" 
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff4chpro/power1"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff4chpro/power2"
+        payload: ""
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff4chpro/power3"
+        payload: "" 
+    - service: mqtt.publish
+      data:
+        topic: "cmnd/sonoff4chpro/power4"
+        payload: ""

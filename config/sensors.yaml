@@ -179,12 +179,3 @@
   availability_topic: "zigbee2mqtt/bridge/state"
   unit_of_measurement: 'V'
   value_template: "{{ value_json.voltage }}"
-
-# Mobile Phone Sensors for get batterry
-- platform: mqtt
-  state_topic: "owntracks/username/anh"
-  name: "ICS ANHLD AndroidPhone Battery"
-  unit_of_measurement: "%"
-  value_template: '{{ value_json.batt }}'
-  device_class: battery
-  scan_interval: 60

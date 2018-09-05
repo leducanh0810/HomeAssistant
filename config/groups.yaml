@@ -35,6 +35,11 @@ input_boolean:
     - input_boolean.light_cps_status
     - input_boolean.light_recep_status
     - input_boolean.light_ics_status
+    - switch.light_sonoff_4chpro_ics
+    - switch.light_sonoff_4chpro_cps
+    - switch.light_sonoff_t1_plan
+    - switch.light_sonoff_4chpro_reccep
+    - switch.light_sonoff_t1_account
 camera_monitor:
   name: Camera monitor
   entities:
@@ -139,6 +144,7 @@ monitor:
       - group.device_tracker_RECEP
       - group.device_tracker_ACC
       - group.device_tracker_PLAN
+      - group.device_tracker_FAC
       - group.device_tracker_check
 device_tracker_ICS:
   name: Devices Tracker ICS Room
@@ -147,22 +153,22 @@ device_tracker_ICS:
     - device_tracker.6c8814a83b44
     - device_tracker.a44e311aaa90
     - device_tracker.a088b437518c
-    - device_tracker.1c994c60ade6
 device_tracker_CPS:
   name: Devices Tracker CPS Room
   entities:
     - device_tracker.5ce0c5a4d29c
-    - device_tracker.448500782d8c
     - device_tracker.b072bf69f0d7
     - device_tracker.448500c097de
     - device_tracker.c81ee73264f7
     - device_tracker.24f6779643a5
     - device_tracker.68ed430b4ffd
-    - device_tracker.283b827e6fb0
+    - device_tracker.6036dd3ffde0
+    - device_tracker.605718be2a35
 device_tracker_RECEP:
   name: Devices Tracker Reception Room
   entities:
     - device_tracker.842b2b8c9efd
+    - device_tracker.68dbcaa40166
 device_tracker_ACC:
   name: Devices Tracker Account Room
   entities:
@@ -181,10 +187,16 @@ device_tracker_PLAN:
     - device_tracker.6067205d4fc8
     - device_tracker.1c5cf2846836
     - device_tracker.d033116cf40e
+    - device_tracker.64a5c3d3424a
+    - device_tracker.34f64bbb56de
+device_tracker_FAC:
+  name: Devices Tracker From Factory
+  entities:
+    #- device_tracker.605718e14466
 device_tracker_check:
   name: Devices Tracking Check
   entities:
-    - device_tracker.64a5c3d3424a
     - device_tracker.a01828cd471d
     - device_tracker.8c8ef2c164c4
-    - device_tracker.68dbcaa40166
+    - device_tracker.1c994c60ade6
+    - device_tracker.94b10a137ed7

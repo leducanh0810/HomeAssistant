@@ -1,0 +1,21 @@
+switch.light_sonoff_4chpro_ics:
+  friendly_name: Lighting ICS Room
+switch.light_sonoff_4chpro_cps:
+  friendly_name: Lighting CPS Room
+switch.light_sonoff_t1_plan:
+  friendly_name: Lighting PLAN Room
+switch.light_sonoff_4chpro_reccep:
+  friendly_name: Lighting Reception Room
+switch.light_sonoff_t1_account_1:
+  hidden: true
+switch.light_sonoff_t1_account_2:
+  hidden: true
+switch.light_sonoff_4chpro_account:
+  hidden: true
+switch.light_sonoff_t1_account:
+  friendly_name: Lighting Account Room
+
+script.turn_on_switch_account:
+  hidden: true
+script.turn_off_switch_account:
+  hidden: true
