@@ -181,6 +181,7 @@
 #   value_template: "{{ value_json.voltage }}"
 
   # Sensors for trigger automation
+
 - platform: template
   sensors:
     trigger_turn_on_light_ics:
@@ -256,6 +257,16 @@
     trigger_turn_off_light_account:
       value_template: >-
         {%- if ((is_state('group.device_tracker_account', 'not_home') and is_state('sensor.camera_account_motion', 'off')) or (is_state('sensor.camera_account_motion', 'off') and is_state('sensor.time_lunch_boolean', 'on') and now().minute()>=10)) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_off_light_plan:
+      value_template: >-
+        {%- if (is_state('group.device_tracker_plan', 'not_home') or (is_state('sensor.time_lunch_boolean', 'on') and now().minute()>=10)) -%}
           on
         {%- else -%}
           off

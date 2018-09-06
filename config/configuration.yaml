@@ -76,7 +76,7 @@ light: !include lights.yaml
 switch: !include switches.yaml
 camera: !include cameras.yaml
 shell_command: !include shell_commands.yaml
-media_player: !include media_players.yaml
+# media_player: !include media_players.yaml
 device_tracker: !include device_trackers.yaml
 zone: !include zones.yaml
 
@@ -85,10 +85,10 @@ ifttt:
 
 mqtt:
   discovery: true
-  broker: 192.168.1.27
+  broker: 192.168.1.20
   port: 1883
-  username: username
-  password: password
+  username: chauphanvan
+  password: 1
   birth_message:
     topic: 'hass/status'
     payload: 'online'
@@ -96,3 +96,7 @@ mqtt:
     topic: 'hass/status'
     payload: 'offline'
 
+notify:
+  - name: push_tophone
+    platform: pushbullet
+    api_key: o.ZlCq9ywhGpQcnp5UbxCTb1NAHcOBIF2M

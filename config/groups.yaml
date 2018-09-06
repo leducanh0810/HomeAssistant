@@ -26,6 +26,7 @@ trigger:
     - sensor.trigger_turn_off_light_recep
     - sensor.trigger_turn_on_light_account
     - sensor.trigger_turn_off_light_account
+    - sensor.trigger_turn_off_light_plan
 sensor:
   name: Sensor
   entities:
@@ -138,6 +139,8 @@ automationlist:
     - automation.motion_turn_off_cps
     - automation.motion_turn_off_recep
     - automation.motion_turn_off_account
+    - automation.motion_turn_off_plan
+    - automation.auto_light_turn_off_plan
 scriptlist:
   name: Script List
   entities:

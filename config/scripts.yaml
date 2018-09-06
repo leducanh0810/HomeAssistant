@@ -7,6 +7,9 @@ turnoff_motion_light_day_ics:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_ics
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Day ICS"
 turnoff_motion_light_night_ics:
   sequence:
   - service: automation.turn_off
@@ -18,6 +21,9 @@ turnoff_motion_light_night_ics:
     data:
       entity_id: automation.auto_light_turn_on_ics
   - service: shell_command.cam_tech_motion_turn_on_inlightoff_night
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Night ICS"
 turnoff_motion_off_night_cps:
   sequence:
   - service: automation.turn_off
@@ -29,6 +35,9 @@ turnoff_motion_off_night_cps:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_cps
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Night CPS"
 turnoff_motion_off_day_cps:
   sequence:
   - service: automation.turn_off
@@ -40,9 +49,15 @@ turnoff_motion_off_day_cps:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_cps
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Day CPS"
 turnoff_motion_on_day_cps:
   sequence:
   - service: shell_command.cam_tech_motion_turn_on_inlighton
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Day CPS"
 turnoff_motion_off_night_recep:
   sequence:
   - service: automation.turn_off
@@ -58,6 +73,9 @@ turnoff_motion_off_night_recep:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_recep
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Night Recep"
 turnoff_motion_off_day_recep:
   sequence:
   - service: automation.turn_off
@@ -69,15 +87,24 @@ turnoff_motion_off_day_recep:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_recep
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Day Recep"
 turnoff_motion_on_day_recep:
   sequence:
   - service: shell_command.cam_recep_motion_turn_on_inlighton
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Day recep"
 turnoff_motion_on_night_recep:
   sequence:
   - service: shell_command.cam_account_motion_turn_off
   - service: shell_command.cam_recep_motion_turn_on_inlighton
   - delay: 00:00:05
   - service: shell_command.cam_account_motion_turn_on_inlightoff_night
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Night Recep"
 turnoff_motion_off_day_account:
   sequence:
   - service: automation.turn_off
@@ -89,6 +116,9 @@ turnoff_motion_off_day_account:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_account
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Day Account"
 turnoff_motion_off_night_account:
   sequence:
   - service: automation.turn_off
@@ -110,9 +140,63 @@ turnoff_motion_off_night_account:
   - service: automation.turn_on
     data:
       entity_id: automation.auto_light_turn_on_recep
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Night Account"
 turnoff_motion_on_day_account:
   sequence:
   - service: shell_command.cam_account_motion_turn_on_inlighton
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Day Account"
+turnoff_motion_off_night_plan:
+  sequence:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: shell_command.cam_account_motion_turn_off
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_off
+  - delay: 00:00:02
+  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: notify.push_tophone
+    data:
+      message: "Turn Off Light Night Plan"
+turnoff_motion_on_night_plan:
+  sequence:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: shell_command.cam_account_motion_turn_off
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_off
+  - delay: 00:00:02
+  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: notify.push_tophone
+    data:
+      message: "Turn On Light Night Plan"
 
 turn_on_switch_account:
   sequence:

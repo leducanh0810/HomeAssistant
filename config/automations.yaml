@@ -86,7 +86,7 @@
   - service: script.turn_on
     data_template:
       entity_id: >-
-        {% if ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_tech_irled','off') and is_state('switch.light_sonoff_4chpro_cps','off')) and is_state('switch.light_sonoff_4chpro_cps','off')) %}
+        {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_tech_irled','off') and is_state('switch.light_sonoff_4chpro_cps','off')) %}
           script.turnoff_motion_off_day_cps
         {% elif ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_tech_irled','off') and is_state('switch.light_sonoff_4chpro_cps','off')) and is_state('switch.light_sonoff_4chpro_cps','on')) %}
           script.turnoff_motion_on_day_cps
@@ -137,7 +137,7 @@
   - service: script.turn_on
     data_template:
       entity_id: >-
-        {% if ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','off') and is_state('switch.light_sonoff_t1_account','off')) and is_state('switch.light_sonoff_t1_account','off')) %}
+        {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','off') and is_state('switch.light_sonoff_t1_account','off')) %}
           script.turnoff_motion_off_day_account
         {% elif ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','off') and is_state('switch.light_sonoff_t1_account','off')) and is_state('switch.light_sonoff_t1_account','on')) %}
           script.turnoff_motion_on_day_account
@@ -188,7 +188,7 @@
   - service: script.turn_on
     data_template:
       entity_id: >-
-        {% if ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','off') and is_state('switch.light_sonoff_4chpro_recep','off')) and is_state('switch.light_sonoff_4chpro_recep','off')) %}
+        {% if (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','off') and is_state('switch.light_sonoff_4chpro_recep','off')) %}
           script.turnoff_motion_off_day_recep
         {% elif ((is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','off') and is_state('switch.light_sonoff_4chpro_recep','off')) and is_state('switch.light_sonoff_4chpro_recep','on')) %}
           script.turnoff_motion_on_day_recep
@@ -196,6 +196,40 @@
           script.turnoff_motion_off_night_recep
         {% elif ((is_state('sensor.time_night_boolean','on') or (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_recep_irled','on'))) and is_state('switch.light_sonoff_4chpro_recep','on')) %}
           script.turnoff_motion_on_night_recep
+        {% endif %}
+
+- alias: auto_light_turn_off_plan
+  trigger:
+  - platform: state
+    entity_id: sensor.trigger_turn_off_light_plan
+    to: 'on'
+    for:
+      minutes: 3
+  condition:
+    - condition: state
+      entity_id: switch.light_sonoff_t1_plan
+      state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.light_sonoff_t1_plan
+- alias: motion_turn_off_plan
+  trigger:
+  - platform: state
+    entity_id: switch.light_sonoff_t1_plan
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: switch.light_sonoff_t1_plan
+    from: 'on'
+    to: 'off'
+  action:
+  - service: script.turn_on
+    data_template:
+      entity_id: >-
+        {% if ((is_state('sensor.time_night_boolean','on') or (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','on'))) and is_state('switch.light_sonoff_t1_plan','off')) %}
+          script.turnoff_motion_off_night_plan
+        {% elif ((is_state('sensor.time_night_boolean','on') or (is_state('sensor.time_work_boolean','on') and is_state('sensor.camera_account_irled','on'))) and is_state('switch.light_sonoff_t1_plan','on')) %}
+          script.turnoff_motion_on_night_plan
         {% endif %}
 
 - alias: "Power state on HA start-up"

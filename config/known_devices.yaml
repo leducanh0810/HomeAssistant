@@ -260,7 +260,7 @@ b06ebfa9dc04:
   mac: B0:6E:BF:A9:DC:04
   name: b06ebfa9dc04
   picture:
-  track: true
+  track: false
 
 c88550871dfb:
   hide_if_away: true
@@ -781,3 +781,11 @@ ec1f72bcc9f3:
   name: PRODUCT_DANHNT_PC
   picture:
   track: true
+
+30a9de2e73f6:
+  hide_if_away: true
+  icon:
+  mac: 30:A9:DE:2E:73:F6
+  name: CAS_TVLG
+  picture:
+  track: false
