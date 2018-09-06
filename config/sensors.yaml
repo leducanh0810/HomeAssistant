@@ -72,10 +72,10 @@
     camera_motion_all:
       friendly_name: "Camera motion all"
       value_template: >-
-        {%- if ((is_state('sensor.camera_account_motion', 'off') and is_state('sensor.camera_recep_motion', 'off') and is_state('binary_sensor.xiaomi_motion_sensor','off') and is_state('sensor.camera_tech_motion', 'off') and (now().weekday() < 6)) or (is_state('sensor.camera_recep_motion', 'off') and (now().weekday() == 6))) -%}
-          off
-        {%- else -%}
+        {%- if ((is_state('sensor.camera_account_motion', 'on') or is_state('sensor.camera_recep_motion', 'on') or is_state('binary_sensor.xiaomi_motion_sensor','on') or is_state('sensor.camera_tech_motion', 'on') and (now().weekday() < 6) and (now().hour<19) and (now().hour>=6)) or (is_state('sensor.camera_recep_motion', 'on') and ((now().weekday() == 6) or ((now().weekday() < 6) and (now().hour>=19) and (now().hour<6))))) -%}
           on
+        {%- else -%}
+          off
         {%- endif -%}
   scan_interval: 2
 
@@ -155,27 +155,109 @@
     - uv_index
 
 # Xiaomi Sensors for get batterry
-- platform: mqtt
-  name: "xiaomi_zigbee_motion_battery"
-  state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
-  availability_topic: "zigbee2mqtt/bridge/state"
-  unit_of_measurement: '%'
-  value_template: "{{ value_json.battery }}"
-- platform: mqtt
-  name: "xiaomi_zigbee_motion_voltage"
-  state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
-  availability_topic: "zigbee2mqtt/bridge/state"
-  unit_of_measurement: 'V'
-  value_template: "{{ value_json.voltage }}"
-- platform: mqtt
-  name: "xiaomi_zigbee_tempt_battery"
-  state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
-  availability_topic: "zigbee2mqtt/bridge/state"
-  unit_of_measurement: '%'
-  value_template: "{{ value_json.battery }}"
-- platform: mqtt
-  name: "xiaomi_zigbee_tempt_voltage"
-  state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
-  availability_topic: "zigbee2mqtt/bridge/state"
-  unit_of_measurement: 'V'
-  value_template: "{{ value_json.voltage }}"
+# - platform: mqtt
+#   name: "xiaomi_zigbee_motion_battery"
+#   state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
+#   availability_topic: "zigbee2mqtt/bridge/state"
+#   unit_of_measurement: '%'
+#   value_template: "{{ value_json.battery }}"
+# - platform: mqtt
+#   name: "xiaomi_zigbee_motion_voltage"
+#   state_topic: "zigbee2mqtt/xiaomi_motion_sensor"
+#   availability_topic: "zigbee2mqtt/bridge/state"
+#   unit_of_measurement: 'V'
+#   value_template: "{{ value_json.voltage }}"
+# - platform: mqtt
+#   name: "xiaomi_zigbee_tempt_battery"
+#   state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
+#   availability_topic: "zigbee2mqtt/bridge/state"
+#   unit_of_measurement: '%'
+#   value_template: "{{ value_json.battery }}"
+# - platform: mqtt
+#   name: "xiaomi_zigbee_tempt_voltage"
+#   state_topic: "zigbee2mqtt/xiaomi_zigbee_tempt"
+#   availability_topic: "zigbee2mqtt/bridge/state"
+#   unit_of_measurement: 'V'
+#   value_template: "{{ value_json.voltage }}"
+
+  # Sensors for trigger automation
+- platform: template
+  sensors:
+    trigger_turn_on_light_ics:
+      value_template: >-
+        {%- if (is_state('group.device_tracker_ics', 'home') and (is_state('sensor.time_work_boolean', 'on') or is_state('sensor.time_night_boolean', 'on'))) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_off_light_ics:
+      value_template: >-
+        {%- if (is_state('group.device_tracker_ics', 'not_home')) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_on_light_cps:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_cps', 'home') or is_state('sensor.camera_tech_motion', 'on')) and (is_state('sensor.time_work_boolean', 'on') or is_state('sensor.time_night_boolean', 'on'))) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_off_light_cps:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_cps', 'not_home') and is_state('sensor.camera_tech_motion', 'off')) or (is_state('sensor.camera_tech_motion', 'off') and is_state('sensor.time_lunch_boolean', 'on') and now().minute()>=10)) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_on_light_recep:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_recep', 'home') or is_state('sensor.camera_motion_all', 'on')) and (is_state('sensor.time_work_boolean', 'on') or is_state('sensor.time_night_boolean', 'on'))) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_off_light_recep:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_recep', 'not_home') and is_state('sensor.camera_motion_all', 'off')) or (is_state('sensor.camera_motion_all', 'off') and is_state('sensor.time_lunch_boolean', 'on') and now().minute()>=10)) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_on_light_account:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_account', 'home') or is_state('sensor.camera_account_motion', 'on')) and (is_state('sensor.time_work_boolean', 'on') or is_state('sensor.time_night_boolean', 'on'))) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1
+- platform: template
+  sensors:
+    trigger_turn_off_light_account:
+      value_template: >-
+        {%- if ((is_state('group.device_tracker_account', 'not_home') and is_state('sensor.camera_account_motion', 'off')) or (is_state('sensor.camera_account_motion', 'off') and is_state('sensor.time_lunch_boolean', 'on') and now().minute()>=10)) -%}
+          on
+        {%- else -%}
+          off
+        {%- endif -%}
+  scan_interval: 1

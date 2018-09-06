@@ -54,7 +54,7 @@
   payload_not_available: "Offline"
   retain: true
 - platform: mqtt
-  name: "light_sonoff_4chpro_reccep"
+  name: "light_sonoff_4chpro_recep"
   state_topic: "stat/sonoff4chpro/POWER3"
   command_topic: "cmnd/sonoff4chpro/POWER3"
   availability_topic: "tele/sonoff4chpro/LWT"

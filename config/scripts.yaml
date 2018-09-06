@@ -1,140 +1,118 @@
-turnoff_light_ics:
+turnoff_motion_light_day_ics:
   sequence:
-  - service: input_boolean.turn_off
+  - service: automation.turn_off
     data:
-      entity_id: input_boolean.light_ics_status
-  - service: ifttt.trigger
+      entity_id: automation.auto_light_turn_on_ics
+  - delay: 00:00:05
+  - service: automation.turn_on
     data:
-      event: turn_off_ics
-turnoff_light_night_cps:
+      entity_id: automation.auto_light_turn_on_ics
+turnoff_motion_light_night_ics:
   sequence:
-  - service: ifttt.trigger
+  - service: automation.turn_off
     data:
-      event: turn_off_cps
-  - service: input_boolean.turn_off
+      entity_id: automation.auto_light_turn_on_ics
+  - service: shell_command.cam_tech_motion_turn_off
+  - delay: 00:00:05
+  - service: automation.turn_on
     data:
-      entity_id: input_boolean.light_cps_status
+      entity_id: automation.auto_light_turn_on_ics
+  - service: shell_command.cam_tech_motion_turn_on_inlightoff_night
+turnoff_motion_off_night_cps:
+  sequence:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_cps
   - service: shell_command.cam_tech_motion_turn_off
   - delay: 00:00:07
   - service: shell_command.cam_tech_motion_turn_on_inlightoff_night
-turnoff_light_night_account:
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_cps
+turnoff_motion_off_day_cps:
   sequence:
-  - service: shell_command.cam_recep_motion_turn_off
-  - delay: 00:00:02
-  - service: shell_command.cam_account_motion_turn_off
-  - service: ifttt.trigger
+  - service: automation.turn_off
     data:
-      event: turn_off_account
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.light_account_status
-  - delay: 00:00:05
-  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
-  - delay: 00:00:02
-  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
-turnoff_light_night_recep:
-  sequence:
-  - service: shell_command.cam_account_motion_turn_off
-  - delay: 00:00:02
-  - service: shell_command.cam_recep_motion_turn_off
-  - service: ifttt.trigger
-    data:
-      event: turn_off_recep
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.light_recep_status
-  - delay: 00:00:05
-  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
-  - delay: 00:00:02
-  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
-turnoff_light_day_cps:
-  sequence:
-  - service: ifttt.trigger
-    data:
-      event: turn_off_cps
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.light_cps_status
+      entity_id: automation.auto_light_turn_on_cps
   - service: shell_command.cam_tech_motion_turn_off
   - delay: 00:00:07
   - service: shell_command.cam_tech_motion_turn_on_inlightoff_day
-turnoff_light_day_account:
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_cps
+turnoff_motion_on_day_cps:
   sequence:
-  - service: ifttt.trigger
+  - service: shell_command.cam_tech_motion_turn_on_inlighton
+turnoff_motion_off_night_recep:
+  sequence:
+  - service: automation.turn_off
     data:
-      event: turn_off_account
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.light_account_status
+      entity_id: automation.auto_light_turn_on_recep
   - service: shell_command.cam_account_motion_turn_off
-  - delay: 00:00:07
-  - service: shell_command.cam_account_motion_turn_on_inlightoff_day
-turnoff_light_day_recep:
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_off
+  - delay: 00:00:05
+  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
+  - delay: 00:00:02
+  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+turnoff_motion_off_day_recep:
   sequence:
-  - service: ifttt.trigger
+  - service: automation.turn_off
     data:
-      event: turn_off_recep
-  - service: input_boolean.turn_off
-    data:
-      entity_id: input_boolean.light_recep_status
+      entity_id: automation.auto_light_turn_on_recep
   - service: shell_command.cam_recep_motion_turn_off
   - delay: 00:00:07
   - service: shell_command.cam_recep_motion_turn_on_inlightoff_day
-turnon_light_ics:
-  sequence:
-  - service: input_boolean.turn_on
+  - service: automation.turn_on
     data:
-      entity_id: input_boolean.light_ics_status
-  - service: ifttt.trigger
-    data:
-      event: turn_on_ics
-turnon_light_day_cps:
+      entity_id: automation.auto_light_turn_on_recep
+turnoff_motion_on_day_recep:
   sequence:
-  - service: ifttt.trigger
-    data:
-      event: turn_on_cps
-  - service: input_boolean.turn_on
-    data:
-      entity_id: input_boolean.light_cps_status
-  - service: shell_command.cam_tech_motion_turn_on_inlighton
-turnon_light_day_account:
-  sequence:
-  - data:
-      event: turn_on_account
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_account_status
-    service: input_boolean.turn_on
-  - service: shell_command.cam_account_motion_turn_on_inlighton
-turnon_light_day_recep:
-  sequence:
-  - data:
-      event: turn_on_recep
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_recep_status
-    service: input_boolean.turn_on
   - service: shell_command.cam_recep_motion_turn_on_inlighton
-turnon_light_night_recep:
+turnoff_motion_on_night_recep:
   sequence:
   - service: shell_command.cam_account_motion_turn_off
-  - data:
-      event: turn_on_recep
-    service: ifttt.trigger
-  - data:
-      entity_id: input_boolean.light_recep_status
-    service: input_boolean.turn_on
   - service: shell_command.cam_recep_motion_turn_on_inlighton
-  - delay: 00:00:01
+  - delay: 00:00:05
   - service: shell_command.cam_account_motion_turn_on_inlightoff_night
-turnon_automation_at_lunch:
+turnoff_motion_off_day_account:
   sequence:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: shell_command.cam_account_motion_turn_off
+  - delay: 00:00:07
+  - service: shell_command.cam_account_motion_turn_on_inlightoff_day
   - service: automation.turn_on
     data:
-      entity_id: automation.auto_light_turn_off_cps
+      entity_id: automation.auto_light_turn_on_account
+turnoff_motion_off_night_account:
+  sequence:
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_account
+  - service: automation.turn_off
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+  - service: shell_command.cam_recep_motion_turn_off
+  - delay: 00:00:02
+  - service: shell_command.cam_account_motion_turn_off
+  - delay: 00:00:05
+  - service: shell_command.cam_recep_motion_turn_on_inlightoff_night
+  - delay: 00:00:02
+  - service: shell_command.cam_account_motion_turn_on_inlightoff_night
   - service: automation.turn_on
     data:
-      entity_id: automation.auto_light_turn_off_recep
+      entity_id: automation.auto_light_turn_on_account
+  - service: automation.turn_on
+    data:
+      entity_id: automation.auto_light_turn_on_recep
+turnoff_motion_on_day_account:
+  sequence:
+  - service: shell_command.cam_account_motion_turn_on_inlighton
 
 turn_on_switch_account:
   sequence:

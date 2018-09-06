@@ -4,7 +4,7 @@ switch.light_sonoff_4chpro_cps:
   friendly_name: Lighting CPS Room
 switch.light_sonoff_t1_plan:
   friendly_name: Lighting PLAN Room
-switch.light_sonoff_4chpro_reccep:
+switch.light_sonoff_4chpro_recep:
   friendly_name: Lighting Reception Room
 switch.light_sonoff_t1_account_1:
   hidden: true

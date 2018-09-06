@@ -14,6 +14,18 @@ camera:
     - group.sensor
     - group.input_boolean
     - group.camera_monitor
+    - group.trigger
+trigger:
+  name: Trigger for Automation
+  entities:
+    - sensor.trigger_turn_on_light_ics
+    - sensor.trigger_turn_off_light_ics
+    - sensor.trigger_turn_on_light_cps
+    - sensor.trigger_turn_off_light_cps
+    - sensor.trigger_turn_on_light_recep
+    - sensor.trigger_turn_off_light_recep
+    - sensor.trigger_turn_on_light_account
+    - sensor.trigger_turn_off_light_account
 sensor:
   name: Sensor
   entities:
@@ -38,7 +50,7 @@ input_boolean:
     - switch.light_sonoff_4chpro_ics
     - switch.light_sonoff_4chpro_cps
     - switch.light_sonoff_t1_plan
-    - switch.light_sonoff_4chpro_reccep
+    - switch.light_sonoff_4chpro_recep
     - switch.light_sonoff_t1_account
 camera_monitor:
   name: Camera monitor
@@ -105,6 +117,9 @@ automation:
   name: Automation
   entities:
     - group.automationlist
+    - group.sensor
+    - group.input_boolean
+    - group.trigger
     - group.scriptlist
 automationlist:
   name: Automation List
@@ -119,6 +134,10 @@ automationlist:
     - automation.auto_turn_on_automation_at_night_time
     - automation.auto_light_turn_on_ics
     - automation.auto_light_turn_off_ics
+    - automation.motion_turn_off_ics
+    - automation.motion_turn_off_cps
+    - automation.motion_turn_off_recep
+    - automation.motion_turn_off_account
 scriptlist:
   name: Script List
   entities:
@@ -164,12 +183,14 @@ device_tracker_CPS:
     - device_tracker.68ed430b4ffd
     - device_tracker.6036dd3ffde0
     - device_tracker.605718be2a35
+    - device_tracker.9c2ea1167b5b
+    - device_tracker.448500782d8c
 device_tracker_RECEP:
   name: Devices Tracker Reception Room
   entities:
     - device_tracker.842b2b8c9efd
     - device_tracker.68dbcaa40166
-device_tracker_ACC:
+device_tracker_ACCOUNT:
   name: Devices Tracker Account Room
   entities:
     - device_tracker.8ca98287185a

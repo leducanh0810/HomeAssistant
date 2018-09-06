@@ -63,9 +63,9 @@ tts:
 cloud: !include cloud.yaml
 
 #duck dns
-duckdns:
-  domain: cas-hassio.duckdns.org
-  access_token: e45e624f-5c0f-4f5f-87c0-acdf09ccd99f
+# duckdns:
+#   domain: cas-hassio.duckdns.org
+#   access_token: e45e624f-5c0f-4f5f-87c0-acdf09ccd99f
 
 group: !include groups.yaml
 automation: !include automations.yaml
@@ -85,10 +85,10 @@ ifttt:
 
 mqtt:
   discovery: true
-  broker: 192.168.1.20
+  broker: 192.168.1.27
   port: 1883
-  username: chauphanvan
-  password: 1
+  username: username
+  password: password
   birth_message:
     topic: 'hass/status'
     payload: 'online'
